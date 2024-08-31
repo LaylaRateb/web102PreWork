@@ -1,74 +1,40 @@
 const GAMES_JSON = [
-    // Your games data here
+    // Example game data
+    { name: "Game A", amountRaised: 20000 },
+    { name: "Game B", amountRaised: 15000 },
+    { name: "Game C", amountRaised: 10000 },
+    // Add more games as needed
 ];
 
-// Function to add games to the page
-function addGamesToPage(games) {
-    // Implementation for adding games to the page
+// Step 1: Calculate top 2 funded games
+const sortedGames = [...GAMES_JSON].sort((a, b) => b.amountRaised - a.amountRaised);
+const [topGame, secondTopGame] = sortedGames;
+
+// Secret key components
+const firstWordTopGame = topGame.name.split(' ')[0]; // Component 1
+const firstWordSecondTopGame = secondTopGame.name.split(' ')[0]; // Component 2
+
+console.log(firstWordTopGame); // zoohow (Example)
+console.log(firstWordSecondTopGame); // zoohow (Example)
+
+// Function to display the top 2 funded games
+function displayTopGames() {
+    const firstGameContainer = document.getElementById('firstGameContainer');
+    const secondGameContainer = document.getElementById('secondGameContainer');
+
+    const firstGameElement = document.createElement('p');
+    firstGameElement.textContent = `Top Game: ${topGame.name}`;
+    firstGameContainer.appendChild(firstGameElement);
+
+    const secondGameElement = document.createElement('p');
+    secondGameElement.textContent = `Second Top Game: ${secondTopGame.name}`;
+    secondGameContainer.appendChild(secondGameElement);
 }
 
-// Function to filter unfunded games
-function filterUnfundedOnly() {
-    const unfundedGames = GAMES_JSON.filter(game => game.amountRaised < game.goalAmount);
-    console.log(unfundedGames.length); // Secret key component 1
-    addGamesToPage(unfundedGames);
-    return unfundedGames;
-}
+// Call function to display top games
+displayTopGames();
 
-// Function to filter funded games
-function filterFundedOnly() {
-    const fundedGames = GAMES_JSON.filter(game => game.amountRaised >= game.goalAmount);
-    console.log(fundedGames.length); // Secret key component 2
-    addGamesToPage(fundedGames);
-    return fundedGames;
-}
-
-// Function to show all games
-function showAllGames() {
-    addGamesToPage(GAMES_JSON);
-}
-
-// Function to delete child elements
-function deleteChildElements(element) {
-    while (element.firstChild) {
-        element.removeChild(element.firstChild);
-    }
-}
-
-// Event listeners for buttons
-document.getElementById('unfundedBtn').addEventListener('click', () => {
-    deleteChildElements(document.getElementById('descriptionContainer'));
-    filterUnfundedOnly();
-});
-
-document.getElementById('fundedBtn').addEventListener('click', () => {
-    deleteChildElements(document.getElementById('descriptionContainer'));
-    filterFundedOnly();
-});
-
-document.getElementById('showAllBtn').addEventListener('click', () => {
-    deleteChildElements(document.getElementById('descriptionContainer'));
-    showAllGames();
-});
-
-// Step 1: Calculate unfunded games count
-const unfundedGamesCount = GAMES_JSON.filter(game => game.amountRaised < game.goalAmount).length;
-
-// Step 2: Create and append paragraph with summary
-const descriptionContainer = document.getElementById('descriptionContainer');
-const para = document.createElement('p');
-const totalRaised = GAMES_JSON.reduce((acc, game) => acc + game.amountRaised, 0);
-const totalGames = GAMES_JSON.length;
-para.textContent = `Total amount raised: ${totalRaised.toLocaleString()} for ${totalGames} games. There ${unfundedGamesCount === 1 ? 'is' : 'are'} ${unfundedGamesCount} game${unfundedGamesCount === 1 ? '' : 's'} unfunded.`;
-descriptionContainer.appendChild(para);
-
-// Example ternary operator usage
-const isLoggedIn = true; // Example user login status
-const user = { name: 'John' };
-console.log(isLoggedIn ? `Hello ${user.name}` : "Hello!"); // Secret key component 3
-
-// Function to return fee based on membership status
-function getFee(isMember) {
-    return (isMember ? '$2.00' : '$10.00');
-}
-console.log(getFee(true)); // Secret key component 4
+// Secret key components
+const numbers = [1, 2, 3, 4, 5, 6];
+const [one, two, ...rest] = numbers;
+console.log(rest); // Secret key component 3: [3, 4, 5, 6]
