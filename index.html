@@ -3,25 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Fundraising Dashboard</title>
-    <style>
-        /* Add your CSS styles here */
-    </style>
+    <title>Sea Monster Crowdfunding</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="descriptionContainer">
-        <!-- Summary will be added here -->
-    </div>
-    <div id="firstGameContainer">
-        <!-- Top funded game will be displayed here -->
-    </div>
-    <div id="secondGameContainer">
-        <!-- Second top funded game will be displayed here -->
-    </div>
-    <button id="unfundedBtn">Show Unfunded Only</button>
-    <button id="fundedBtn">Show Funded Only</button>
-    <button id="showAllBtn">Show All Games</button>
+    <header>
+        <h1>Sea Monster Crowdfunding</h1>
+    </header>
+
+    <section id="introduction">
+        <h2>About Sea Monster Crowdfunding</h2>
+        <p id="introText"></p>
+    </section>
+
+    <section id="stats">
+        <h2>Statistics</h2>
+        <p id="statsText"></p>
+        <div id="firstGameContainer"></div>
+        <div id="secondGameContainer"></div>
+    </section>
+
+    <section id="ourGames">
+        <h2>Our Games</h2>
+        <div id="gamesList"></div>
+        <button id="showAll">Show All Games</button>
+        <button id="showFunded">Show Funded Games</button>
+        <button id="showUnfunded">Show Unfunded Games</button>
+    </section>
+
     <script src="index.js"></script>
 </body>
 </html>
-
